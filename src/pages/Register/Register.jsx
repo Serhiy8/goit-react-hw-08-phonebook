@@ -11,6 +11,7 @@ const Register = () => {
     const name = form.elements.userName.value;
     const email = form.elements.userEmail.value;
     const password = form.elements.userPassword.value;
+    console.log({ name, email, password });
     dispatch(register({ name, email, password }));
     form.reset();
   };
@@ -40,7 +41,7 @@ const Register = () => {
           id="userMail"
           label="Email"
           type="email"
-          name="userMail"
+          name="userEmail"
           size="small"
           required
         />

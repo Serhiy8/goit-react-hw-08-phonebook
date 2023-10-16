@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 const initialState = {
   items: null,
   isLoading: false,
-  error: null,
 };
 
 export const contactsSlice = createSlice({
