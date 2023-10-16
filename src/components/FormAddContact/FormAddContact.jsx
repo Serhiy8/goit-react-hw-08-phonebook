@@ -1,8 +1,9 @@
 import { Button, TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/operation';
-import { selectContacts } from 'redux/contacts/selectors';
+import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
 import css from './FormAddContact.module.css';
+import { toast } from 'react-toastify';
 // import {
 //   InputContainer,
 //   InputContainerLabel,
@@ -17,7 +18,7 @@ const FormAddContact = () => {
   const dispatch = useDispatch();
   const data = useSelector(selectContacts);
 
-  //   const isLoading = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectIsLoading);
   //   const error = useSelector(selectError);
 
   const checkContact = userName => {
@@ -33,7 +34,7 @@ const FormAddContact = () => {
     const name = form.elements.userName.value;
     const number = form.elements.userNumber.value;
     checkContact(name)
-      ? console.log('Alert')
+      ? toast.error('Contact already in a list')
       : dispatch(addContact({ name, number }));
     form.reset();
   };
@@ -52,41 +53,18 @@ const FormAddContact = () => {
           pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         />
-
-        {/* <label htmlFor="fullName">Full Name:</label>
-    <input
-      type="text"
-      id="fullName"
-      name="userName"
-      pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-      title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-      required
-    /> */}
         <TextField
           id="Number"
           label="Phone number"
           size="small"
-          // defaultValue="Default Value"
-          // helperText="Some important text"
           name="userNumber"
           pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
-        {/* <label htmlFor="phone">Phone number:</label>
-    <input
-      type="tel"
-      id="phone"
-      name="userNumber"
-      pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
-      title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-      required
-    /> */}
-
-        <Button variant="contained" type="submit">
+        <Button variant="contained" type="submit" disabled={isLoading}>
           Add contact
         </Button>
-        {/* <button type="submit">Add contact</button> */}
       </form>
     </div>
   );

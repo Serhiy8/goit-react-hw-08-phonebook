@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { AuthNav } from './AuthNav';
-import { Navigation } from './Navigation';
-import { UserMenu } from './UserMenu';
+import { AuthNav } from './AuthNav/AuthNav';
+import { Navigation } from './Navigation/Navigation';
+import { UserMenu } from './UserMenu/UserMenu';
 import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { useSelector } from 'react-redux';
 import css from './AppBar.module.css';

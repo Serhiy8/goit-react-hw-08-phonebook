@@ -1,19 +1,31 @@
-import { ContactsListItems } from 'components/ContactsListItem/ContactsListItems';
+// import { ContactsListItems } from 'components/ContactsListItem/ContactsListItems';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/operation';
 import { selectContacts } from 'redux/contacts/selectors';
-import css from './ContactsList.module.css';
+// import css from './ContactsList.module.css';
 import { selectUser } from 'redux/auth/auth-selectors';
+import ContactsListLayout from './ContactsListLayout';
+import FilterByName from 'components/Filter/Filter';
+import { selectFilterValue } from 'redux/filter/selectors';
 
 const ContactsList = () => {
   const dispatch = useDispatch();
-  let data = useSelector(selectContacts);
+  const data = useSelector(selectContacts);
   const user = useSelector(selectUser);
+  const filterValue = useSelector(selectFilterValue);
 
-  // if (data && data.length === 0) {
-  //   data = null;
-  // }
+  const visibleContacts = () => {
+    const normalizedFilter = filterValue.toLowerCase();
+    if (!data) {
+      return;
+    }
+    return data.filter(({ name }) =>
+      name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+
+  const contactsForRender = visibleContacts();
 
   useEffect(() => {
     user.name && dispatch(fetchContacts());
@@ -25,25 +37,10 @@ const ContactsList = () => {
         (data.length === 0 ? (
           <h2 style={{ textAlign: 'center' }}>No contacts in the list</h2>
         ) : (
-          <table className={css.tableContacts}>
-            <thead className={css.tableThead}>
-              <tr>
-                <th className={css.tableCell}>Name</th>
-                <th className={css.tableCell}>Phone Number</th>
-                <th className={css.tableCell}>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map(({ id, name, number }) => (
-                <ContactsListItems
-                  key={id}
-                  id={id}
-                  name={name}
-                  number={number}
-                />
-              ))}
-            </tbody>
-          </table>
+          <>
+            <FilterByName />
+            <ContactsListLayout data={contactsForRender} />
+          </>
         ))}
       {/* <ul>
         {data ? (
