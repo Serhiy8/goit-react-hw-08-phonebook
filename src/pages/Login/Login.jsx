@@ -25,8 +25,6 @@ const Login = () => {
           size="small"
           required
         />
-        {/* <label htmlFor="userMail">Mail</label>
-      <input type="text" id="userMail" name="userMail" /> */}
         <TextField
           id="userPassword"
           label="Password"
@@ -35,12 +33,9 @@ const Login = () => {
           size="small"
           required
         />
-        {/* <label htmlFor="userPassword">Password</label>
-      <input type="text" id="userPassword" name="userPassword" /> */}
         <Button variant="contained" type="submit">
           Log in
         </Button>
-        {/* <button type="submit">Log in</button> */}
       </form>
     </div>
   );

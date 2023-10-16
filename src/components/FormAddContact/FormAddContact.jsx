@@ -4,22 +4,12 @@ import { addContact } from 'redux/contacts/operation';
 import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
 import css from './FormAddContact.module.css';
 import { toast } from 'react-toastify';
-// import {
-//   InputContainer,
-//   InputContainerLabel,
-//   InputContainerInput,
-//   FormContact,
-//   InputContainerButton,
-// } from './FormPhoneBook.styled';
-// import { toast } from 'react-toastify';
-// import { RotatingLines } from 'react-loader-spinner';
 
 const FormAddContact = () => {
   const dispatch = useDispatch();
   const data = useSelector(selectContacts);
 
   const isLoading = useSelector(selectIsLoading);
-  //   const error = useSelector(selectError);
 
   const checkContact = userName => {
     const normalizedNewContactName = userName.toLowerCase();
@@ -47,8 +37,6 @@ const FormAddContact = () => {
           label="Name"
           name="userName"
           size="small"
-          // defaultValue="Default Value"
-          // helperText="Some important text"
           required
           pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"

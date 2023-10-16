@@ -28,15 +28,6 @@ const Register = () => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        {/* <label htmlFor="userName">Name</label>
-        <input
-          id="userName"
-          type="text"
-          name="userName"
-          pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        /> */}
         <TextField
           id="userMail"
           label="Email"
@@ -45,8 +36,6 @@ const Register = () => {
           size="small"
           required
         />
-        {/* <label htmlFor="userEmail">Email:</label>
-        <input id="userEmail" type="email" name="userEmail" required /> */}
         <TextField
           id="userPassword"
           label="Password"
@@ -55,9 +44,6 @@ const Register = () => {
           size="small"
           required
         />
-        {/* <label htmlFor="userPassword">Password</label>
-        <input id="userPassword" type="password" name="userPassword" required /> */}
-        {/* <button type="submit">Register</button> */}
         <Button variant="contained" type="submit">
           Register
         </Button>

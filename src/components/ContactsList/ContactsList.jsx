@@ -42,15 +42,6 @@ const ContactsList = () => {
             <ContactsListLayout data={contactsForRender} />
           </>
         ))}
-      {/* <ul>
-        {data ? (
-          data.map(({ id, name, number }) => (
-            <ContactsListItems key={id} id={id} name={name} number={number} />
-          ))
-        ) : (
-          <h2>No contacts in the list</h2>
-        )}
-      </ul> */}
     </div>
   );
 };

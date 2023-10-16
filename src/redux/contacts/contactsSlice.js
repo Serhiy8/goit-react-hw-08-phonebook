@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { addContact, deleteContact, fetchContacts } from './operation';
 import { toast } from 'react-toastify';
+import { logOut } from 'redux/auth/auth-operation';
 
 const initialState = {
   items: null,
@@ -35,8 +36,10 @@ export const contactsSlice = createSlice({
         toast.success('Contact deleted!');
       })
       .addCase(deleteContact.rejected, (state, action) => {
-        // state.error = action.error.message;
         toast.warn('Contact not deleted!');
+      })
+      .addCase(logOut.fulfilled, state => {
+        state.items = null;
       });
   },
 });
