@@ -1,0 +1,17 @@
+.navigationList {
+  display: flex;
+  gap: 20px;
+  padding: 0;
+}
+
+.navigationLink {
+  font-size: 1.2em;
+  color: #1976d2;
+}
+.navigationLink:hover {
+  color: #1565c0;
+}
+
+.activeLink {
+  text-decoration: underline 2px #1565c0;
+}

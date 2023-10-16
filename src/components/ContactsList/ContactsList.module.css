@@ -1,0 +1,14 @@
+.tableContacts {
+  margin: 0 auto;
+  width: 50%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.tableCell {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+.tableThead {
+  background-color: #f2f2f2;
+}
