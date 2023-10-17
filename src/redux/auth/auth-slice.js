@@ -33,6 +33,10 @@ const authSlice = createSlice({
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
+      })
+      .addCase(fetchCurrentUser.rejected, state => {
+        state.isLoggedIn = false;
+        state.token = null;
       });
   },
 });

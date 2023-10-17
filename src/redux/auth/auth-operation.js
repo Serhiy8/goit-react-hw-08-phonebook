@@ -35,7 +35,7 @@ export const login = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      toast.warn('Something went wrong, try reload the page.');
+      toast.warn('Something went wrong.');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -65,7 +65,8 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      toast.warn('Something went wrong, try reload the page.');
+      toast.warn('Please log in again');
+      token.unset();
       return thunkAPI.rejectWithValue(error.message);
     }
   }
