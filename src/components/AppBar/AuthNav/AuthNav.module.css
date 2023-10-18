@@ -4,6 +4,7 @@
 }
 
 .authNavLink {
+  position: relative;
   font-size: 1.2em;
   color: #1976d2;
 }
@@ -11,6 +12,19 @@
   color: #1565c0;
 }
 
-.activeLink {
-  text-decoration: underline 2px #1565c0;
+.authNavLink::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background-color: #1565c0;
+  border-radius: 2px;
+  transition: width 0.2s linear;
+}
+
+.authNavLink:hover::before {
+  width: 100%;
 }
