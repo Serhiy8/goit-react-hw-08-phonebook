@@ -14,8 +14,6 @@ const DeleteButton = ({ onClick, disabled }) => {
               height="20"
               width="16"
               ariaLabel="hourglass-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
               colors={['#757575', '#757575']}
             />
           </div>
