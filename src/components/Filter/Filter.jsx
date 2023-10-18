@@ -14,7 +14,6 @@ const FilterByName = () => {
         id="FindByName"
         label="Find by name"
         type="text"
-        //   name="userMail"
         size="small"
         onChange={changeFilter}
       />

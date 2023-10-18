@@ -9,13 +9,13 @@ const Navigation = () => {
     <nav>
       <ul className={css.navigationList}>
         <li>
-          <Link to="/" className={`${css.navigationLink}`}>
+          <Link to="/" className={css.navigationLink}>
             Home
           </Link>
         </li>
         {isLoggedIn && (
           <li>
-            <Link to="/contacts" className={`${css.navigationLink}`}>
+            <Link to="/contacts" className={css.navigationLink}>
               Contacts
             </Link>
           </li>

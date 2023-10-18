@@ -1,9 +1,7 @@
-// import { ContactsListItems } from 'components/ContactsListItem/ContactsListItems';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/operation';
 import { selectContacts } from 'redux/contacts/selectors';
-// import css from './ContactsList.module.css';
 import { selectUser } from 'redux/auth/auth-selectors';
 import ContactsListLayout from './ContactsListLayout';
 import FilterByName from 'components/Filter/Filter';
