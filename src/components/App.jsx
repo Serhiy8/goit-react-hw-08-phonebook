@@ -1,8 +1,7 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useEffect, lazy } from 'react';
 import { fetchCurrentUser } from 'redux/auth/auth-operation';
-import { selectIsLoggedIn } from 'redux/auth/auth-selectors';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AppBar from './AppBar/AppBar';
@@ -10,10 +9,11 @@ const Home = lazy(() => import('pages/Home/Home'));
 const Contacts = lazy(() => import('pages/Contacts/Contacts'));
 const Login = lazy(() => import('pages/Login/Login'));
 const Register = lazy(() => import('pages/Register/Register'));
+const PrivateRoute = lazy(() => import('./PrivateRoute'));
+const PublicRoute = lazy(() => import('./PublicRoute'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
@@ -31,16 +31,28 @@ export const App = () => {
           (
           <Route
             path="/contacts"
-            element={isLoggedIn ? <Contacts /> : <Navigate to="/login" />}
+            element={
+              <PrivateRoute>
+                <Contacts />
+              </PrivateRoute>
+            }
           />
           )
           <Route
             path="/register"
-            element={isLoggedIn ? <Navigate to="/" /> : <Register />}
+            element={
+              <PublicRoute>
+                <Register />
+              </PublicRoute>
+            }
           />
           <Route
             path="/login"
-            element={isLoggedIn ? <Navigate to="/" /> : <Login />}
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
           />
         </Route>
       </Routes>
