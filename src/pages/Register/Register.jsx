@@ -11,7 +11,6 @@ const Register = () => {
     const name = form.elements.userName.value;
     const email = form.elements.userEmail.value;
     const password = form.elements.userPassword.value;
-    console.log({ name, email, password });
     dispatch(register({ name, email, password }));
     form.reset();
   };
