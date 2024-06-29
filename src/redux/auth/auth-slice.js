@@ -45,7 +45,6 @@ const authSlice = createSlice({
       .addCase(fetchCurrentUser.rejected, state => {
         state.isLoggedIn = false;
         state.token = null;
-        toast.warn('Please log in again');
       });
   },
 });
