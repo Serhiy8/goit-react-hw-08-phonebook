@@ -20,7 +20,6 @@ const authSlice = createSlice({
       })
       .addCase(register.rejected, (_, action) => {
         toast.warn('Something went wrong, try reload the page.');
-        console.log(action);
       })
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
