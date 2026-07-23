@@ -19,7 +19,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(register.rejected, (_, action) => {
-        toast.warn('Something went wrong, try reload the page.');
+        toast.warn(action.payload.message, { autoClose: 3000 });
       })
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
